@@ -9,4 +9,4 @@ A simple discord bot that shows how many players are playing on a Minecraft Serv
 5. To exit type `stop`.
 
 ## Credits
-[jamietech's Minecraft Server ping API](https://github.com/jamietech/MinecraftServerPing)
+* [jamietech's Minecraft Server ping API](https://github.com/jamietech/MinecraftServerPing)
