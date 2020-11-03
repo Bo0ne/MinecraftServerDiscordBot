@@ -34,8 +34,7 @@ public class Bot {
 
         JDABuilder builder = JDABuilder.createDefault(token);
 
-        //TODO attach listeners
-        builder.addEventListeners(new onLaunch(ip));
+        builder.addEventListeners(new onLaunch(ip, Boolean.parseBoolean(conf.getProperty("showIP"))));
         JDA jda = null;
         try {
             jda = builder.build();

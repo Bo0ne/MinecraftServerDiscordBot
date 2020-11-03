@@ -13,9 +13,11 @@ import java.util.TimerTask;
 
 public class onLaunch extends ListenerAdapter {
     final String ip;
+    final boolean showIP;
 
-    public onLaunch(String ip) {
+    public onLaunch(String ip, boolean showIP) {
         this.ip = ip;
+        this.showIP = showIP;
     }
 
     @Override
@@ -31,11 +33,17 @@ public class onLaunch extends ListenerAdapter {
                     Presence presence = event.getJDA().getPresence();
                     presence.setStatus(OnlineStatus.ONLINE);
                     presence.setActivity(Activity.playing("with " + players + " out of " + total));
+                    if (showIP) {
+                        Thread.sleep(5000);
+                        presence.setActivity(Activity.playing("at " + ip));
+                    }
                 } catch (IOException e) {
                     event.getJDA().getPresence().setStatus(OnlineStatus.OFFLINE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         };
-        timer.scheduleAtFixedRate(task, 0, 5000);
+        timer.scheduleAtFixedRate(task, 0, 10000);
     }
 }
