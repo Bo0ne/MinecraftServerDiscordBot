@@ -1,4 +1,5 @@
 import mcping.MinecraftPing;
+import mcping.MinecraftPingOptions;
 import mcping.MinecraftPingReply;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -13,10 +14,12 @@ import java.util.TimerTask;
 
 public class onLaunch extends ListenerAdapter {
     final String ip;
+    int port;
     final boolean showIP;
 
-    public onLaunch(String ip, boolean showIP) {
+    public onLaunch(String ip, int port, boolean showIP) {
         this.ip = ip;
+        this.port = port;
         this.showIP = showIP;
     }
 
@@ -27,7 +30,7 @@ public class onLaunch extends ListenerAdapter {
             @Override
             public void run() {
                 try {
-                    MinecraftPingReply mcping = new MinecraftPing().getPing(ip);
+                    MinecraftPingReply mcping = new MinecraftPing().getPing(new MinecraftPingOptions().setHostname(ip).setPort(port));
                     int players = mcping.getPlayers().getOnline();
                     int total = mcping.getPlayers().getMax();
                     Presence presence = event.getJDA().getPresence();

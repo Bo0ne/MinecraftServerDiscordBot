@@ -24,6 +24,8 @@ public class Bot {
 
         String token = conf.getProperty("token");
         String ip = conf.getProperty("serverIP");
+        int port = Integer.parseInt(conf.getProperty("port"));
+
         if (token == null) {
             System.out.println("Token not found in config.properties");
             System.exit(1);
@@ -31,10 +33,10 @@ public class Bot {
             System.out.println("ServerIP not found in config.properties");
             System.exit(1);
         }
-
+        System.out.println("Running for " + ip + " on port " + port);
         JDABuilder builder = JDABuilder.createDefault(token);
 
-        builder.addEventListeners(new onLaunch(ip, Boolean.parseBoolean(conf.getProperty("showIP"))));
+        builder.addEventListeners(new onLaunch(ip, port, Boolean.parseBoolean(conf.getProperty("showIP"))));
         JDA jda = null;
         try {
             jda = builder.build();
