@@ -11,7 +11,7 @@ A simple discord bot that shows how many players are playing on a Minecraft Serv
 ## Installation
 1. Download the latest release on the right side of the page.
 2. Download the `config.properties` file from the release page as well and place it in the same folder as the `.jar`.
-3. Edit the `config.properties` file and insert your Discord bot token and Minecraft server IP there.
+3. Edit the `config.properties` file and insert your Discord bot token and Minecraft server IP there, you can also change the port for the Minecraft server.
 4. Run the `.jar` file you downloaded using the command `java -jar path_to_jar.jar`
 5. To exit type `stop`.
 
